@@ -35,29 +35,40 @@ These skills let you quickly recall this knowledge in Claude Code using simple c
 1. [Yolog Desktop](https://yolog.dev) installed with sessions imported
 2. Memory extraction enabled (Settings > AI Features)
 
-### Setup
+### Option 1: Install via Claude Code (Recommended)
 
-1. **Clone this repo** (or download the `skills/yo` folder)
+In Claude Code, simply say:
+```
+install skill https://github.com/yologdev/yo-skills
+```
+
+### Option 2: Manual Installation
+
+1. **Clone this repo**
    ```bash
    git clone https://github.com/yologdev/yo-skills.git
    ```
 
 2. **Copy to your project**
    ```bash
-   cp -r yolog-skills/skills/yo /path/to/your/project/.claude/skills/
+   cp -r yo-skills/skills/yo /path/to/your/project/.claude/skills/
    ```
 
-3. **Configure the MCP CLI path**
-   - Open Yolog Desktop > Settings > Memory & Skills
-   - Copy the "MCP CLI Path"
-   - Open `.claude/skills/yo/SKILL.md`
-   - Replace `/path/to/yolog-mcp-server` with the copied path
+### Configure MCP CLI Path
 
-4. **Use in Claude Code**
-   ```
-   /yo context
-   /yo recall database migrations
-   ```
+After installation, configure the MCP CLI path:
+
+1. Open Yolog Desktop > Settings > Memory & Skills
+2. Copy the "MCP CLI Path"
+3. Open `.claude/skills/yo/SKILL.md`
+4. Replace `/path/to/yolog-mcp-server` with the copied path
+
+### Start Using
+
+```
+/yo context
+/yo recall database migrations
+```
 
 ## How it Works
 

@@ -4,6 +4,15 @@ Thanks for your interest in improving Yolog Skills!
 
 ## How to Use
 
+### Quick Install (Recommended)
+
+In Claude Code, say:
+```
+install skill https://github.com/yologdev/yo-skills
+```
+
+### Manual Install
+
 1. Clone this repo:
    ```bash
    git clone https://github.com/yologdev/yo-skills.git
