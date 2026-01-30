@@ -1,24 +1,26 @@
-# /yo recall
+# /yo search
 
 Search memories by keyword or topic.
 
 ## Usage
 
 ```
-/yo recall <query>
+/yo search <query>
+/yo recall <query>  # Alias
 ```
 
 ## Examples
 
 ```
-/yo recall error handling
-/yo recall authentication flow
-/yo recall database migrations
+/yo search error handling
+/yo search authentication flow
+/yo search database migrations
+/yo recall design decisions
 ```
 
 ## Instructions
 
-1. Extract the search query (everything after "recall ")
+1. Extract the search query (everything after "search " or "recall ")
 
 2. Call `yolog_search_memories` via CLI:
 ```bash
@@ -29,17 +31,22 @@ printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_se
 
 4. Display memories grouped by type:
 ```
-## Decisions
-- [title]: [summary]
+## Search Results for "<query>"
 
-## Patterns
-- [title]: [summary]
+### Decisions
+- **[title]**: [summary]
 
-## Bugs
-- [title]: [summary]
+### Patterns
+- **[title]**: [summary]
 
-## Architecture
-- [title]: [summary]
+### Architecture
+- **[title]**: [summary]
+
+### Bugs
+- **[title]**: [summary]
+
+### Other
+- **[type] [title]**: [summary]
 ```
 
 5. Summarize key findings at the end
@@ -49,3 +56,4 @@ printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_se
 - Replace `<CWD>` with the current working directory
 - Replace `<QUERY>` with the user's search query
 - Replace `<MCP_CLI_PATH>` with the path from SKILL.md Configuration section
+- Results use hybrid search (keyword + semantic) for best relevance

@@ -1,6 +1,6 @@
 # /yo context
 
-Get project overview at session start.
+Get session context including current task state, decisions, and relevant memories.
 
 ## Usage
 
@@ -10,34 +10,45 @@ Get project overview at session start.
 
 ## Instructions
 
-1. Call `yolog_get_project_context` via CLI:
+1. Get `YOLOG_SESSION_ID` from environment (set by SessionStart hook)
+
+2. If `YOLOG_SESSION_ID` is not set, use `yolog_get_project_context` as fallback:
 ```bash
 printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_get_project_context","arguments":{"project_path":"<CWD>"}}}' | <MCP_CLI_PATH>
 ```
 
-2. Parse the JSON response
-
-3. Display the project overview:
-```
-## Project Context
-
-### Key Decisions
-- [decision summaries]
-
-### Established Patterns
-- [pattern summaries]
-
-### Architecture Notes
-- [architecture insights]
-
-### Known Bugs
-- [bug summaries]
+3. If `YOLOG_SESSION_ID` is set, call `yolog_get_session_context`:
+```bash
+printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_get_session_context","arguments":{"session_id":"<SESSION_ID>","project_path":"<CWD>"}}}' | <MCP_CLI_PATH>
 ```
 
-4. Summarize what to keep in mind while working on this project
+4. Parse the JSON response
+
+5. Display the session context:
+```
+## Session Context
+
+### Current State
+- **Active Task:** [task description]
+- **Resume Context:** [if available, from last compaction]
+- **Recent Decisions:** [list]
+- **Open Questions:** [list]
+
+### Persistent Knowledge (High Importance)
+- [high-state memories from project]
+
+### This Session's Memories
+- [memories extracted this session]
+
+### Recent Memories (Last 3 Sessions)
+- [memories from recent other sessions]
+```
+
+6. Summarize key points to keep in mind while working
 
 ## Notes
 
 - Replace `<CWD>` with the current working directory
+- Replace `<SESSION_ID>` with YOLOG_SESSION_ID from environment
 - Replace `<MCP_CLI_PATH>` with the path from SKILL.md Configuration section
-- Use this command at the start of a coding session to understand project conventions
+- Use this at session start or after context compaction to resume work
