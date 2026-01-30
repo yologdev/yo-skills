@@ -80,7 +80,26 @@ Check if the MCP server is accessible at common paths:
 echo '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | /Applications/yolog.app/Contents/MacOS/yolog-mcp-server 2>/dev/null | head -c 100
 ```
 
-### Step 5: Display success message
+### Step 5: Add memory protocol to CLAUDE.md
+
+Append the following to the project's `CLAUDE.md` (create if doesn't exist):
+
+```markdown
+### Yolog Memory Protocol
+
+This project uses Yolog for persistent memory across sessions.
+
+**At session start:** Use `/yo context` to check for active tasks and decisions.
+
+**Before answering historical questions** like "What did we decide about X?":
+- ALWAYS use `/yo search <keywords>` BEFORE answering
+- Search the project memories, don't rely on your own memory
+- Quote the relevant memory in your response
+
+**After significant progress:** Use `/yo update` to checkpoint work.
+```
+
+### Step 6: Display success message
 
 ```
 ✅ Yolog hooks configured successfully!
@@ -91,6 +110,9 @@ Hooks installed:
 
 Settings updated:
   - .claude/settings.local.json
+
+CLAUDE.md updated:
+  - Added Yolog Memory Protocol section
 
 Next steps:
   1. Restart Claude Code to activate hooks

@@ -16,6 +16,17 @@ Access project memories and session context from the Yolog desktop app.
 
 Run `/yo init` to set up hooks for the current project, then restart Claude Code.
 
+## Proactive Usage (IMPORTANT)
+
+**At session start:** Use `/yo context` to check for active tasks and recent decisions.
+
+**Before answering historical questions** like "What did we decide about X?":
+- ALWAYS use `/yo search <keywords>` BEFORE answering
+- Do NOT rely on your own memory - search the project memories first
+- Quote the relevant memory in your response
+
+**After significant progress:** Use `/yo update` to checkpoint your work.
+
 ## Configuration
 
 MCP CLI path (copy from Yolog Settings > Memory & Skills):
