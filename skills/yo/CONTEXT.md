@@ -12,9 +12,10 @@ Get session context including current task state, decisions, and relevant memori
 
 1. Get `YOLOG_SESSION_ID` from environment (set by SessionStart hook)
 
-2. If `YOLOG_SESSION_ID` is not set, use `yolog_get_project_context` as fallback:
-```bash
-printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_get_project_context","arguments":{"project_path":"<CWD>"}}}' | <MCP_CLI_PATH>
+2. If `YOLOG_SESSION_ID` is not set, inform the user:
+```
+Session ID not available. Use `/yo project` for project-wide context,
+or ensure the SessionStart hook is configured.
 ```
 
 3. If `YOLOG_SESSION_ID` is set, call `yolog_get_session_context`:
