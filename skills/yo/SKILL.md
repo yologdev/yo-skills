@@ -12,7 +12,7 @@ Access project memories and session context from the Yolog desktop app.
 MCP CLI path (copy from Yolog Settings > Memory & Skills):
 
 ```
-MCP_CLI_PATH=/Applications/yolog.app/Contents/MacOS/yolog-mcp-server
+MCP_CLI_PATH=/Users/yuanhao/vibedev/yolog/desktop/src-tauri/target/release/bundle/macos/yolog.app/Contents/MacOS/yolog-mcp-server
 ```
 
 ## Commands
