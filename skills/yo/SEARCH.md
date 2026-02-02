@@ -7,9 +7,7 @@ Search memories by keyword, topic, or tag.
 ```
 /yo search <query>                    # Keyword/semantic search
 /yo search tag:<tagname>              # Filter by tag only
-/yo search #<tagname>                 # Shorthand for tag filter
 /yo search tag:<tagname> <query>      # Combined: tag filter + keyword search
-/yo search #<tagname> <query>         # Shorthand combined
 ```
 
 ## Examples
@@ -18,9 +16,8 @@ Search memories by keyword, topic, or tag.
 /yo search error handling
 /yo search authentication flow
 /yo search tag:bug
-/yo search #frontend
 /yo search tag:bug timezone           # Bugs related to timezone
-/yo search #security api validation   # Security issues about API validation
+/yo search tag:security api           # Security issues about API
 ```
 
 ## Instructions
@@ -28,19 +25,21 @@ Search memories by keyword, topic, or tag.
 1. Extract the search query (everything after "search ")
 
 2. Parse for tag and keyword:
-   - If starts with `tag:<name>` → extract tag, rest is keyword query
-   - If starts with `#<name>` → extract tag (until space), rest is keyword query
-   - If only tag (no additional words) → tag-only filter
+   - If starts with `tag:<name>` → extract tag name, rest is keyword query
    - Otherwise → keyword-only search
 
    Examples:
    - `tag:bug` → tag="bug", query=none
-   - `#frontend api` → tag="frontend", query="api"
+   - `tag:frontend api` → tag="frontend", query="api"
    - `error handling` → tag=none, query="error handling"
 
-3. **Tag-only filter** - Call `yolog_get_memories_by_tag`:
+3. **Tag filter (with or without query)** - Call `yolog_get_memories_by_tag`:
 ```bash
+# Tag only
 printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_get_memories_by_tag","arguments":{"tag":"<TAG>","project_path":"<CWD>","limit":10}}}' | <MCP_CLI_PATH>
+
+# Tag + keyword
+printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_get_memories_by_tag","arguments":{"tag":"<TAG>","query":"<QUERY>","project_path":"<CWD>","limit":10}}}' | <MCP_CLI_PATH>
 ```
 
 4. **Keyword-only search** - Call `yolog_search_memories`:
@@ -48,15 +47,9 @@ printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_ge
 printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_search_memories","arguments":{"query":"<QUERY>","project_path":"<CWD>","limit":10}}}' | <MCP_CLI_PATH>
 ```
 
-5. **Combined tag + keyword** - Call both and intersect results, OR call search with tag in query:
-```bash
-printf '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"yolog_search_memories","arguments":{"query":"<QUERY> <TAG>","project_path":"<CWD>","limit":15}}}' | <MCP_CLI_PATH>
-```
-Then filter results to only show those with matching tag.
+5. Parse the JSON response
 
-6. Parse the JSON response
-
-7. Display memories:
+6. Display memories:
 ```
 ## Search Results for "<query>"
 
@@ -67,7 +60,7 @@ Then filter results to only show those with matching tag.
 2. ...
 ```
 
-8. Summarize key findings at the end
+7. Summarize key findings at the end
 
 ## Notes
 
@@ -75,4 +68,4 @@ Then filter results to only show those with matching tag.
 - Replace `<QUERY>` or `<TAG>` with the extracted value
 - Replace `<MCP_CLI_PATH>` with the path from SKILL.md Configuration section
 - Keyword search uses hybrid (keyword + semantic) for best relevance
-- Tag search is exact match on tag name
+- Tag search filters by exact tag match, then optionally by keyword in title/content

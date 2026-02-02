@@ -34,7 +34,7 @@ MCP_CLI_PATH=/Applications/yolog.app/Contents/MacOS/yolog-mcp-server
 | `/yo project` | Get project context (shared across all sessions). See [PROJECT.md](PROJECT.md) |
 | `/yo search <query>` | Search memories by keyword, topic, or tag. See [SEARCH.md](SEARCH.md) |
 
-**Search supports tags:** `/yo search tag:bug` or `/yo search #frontend`
+**Search supports tags:** `/yo search tag:bug` or `/yo search tag:bug timezone`
 
 ## Instructions
 
@@ -60,9 +60,9 @@ The following environment variables are set by SessionStart hook:
 
 ```
 Yolog Memory Commands:
-  /yo context              - Get session context (current state + memories)
-  /yo project              - Get project context (shared across all sessions)
-  /yo search <query>       - Search memories by keyword or topic
-  /yo search tag:<name>    - Filter memories by tag (e.g., tag:bug)
-  /yo search #<name>       - Shorthand for tag filter (e.g., #frontend)
+  /yo context                  - Get session context (current state + memories)
+  /yo project                  - Get project context (shared across all sessions)
+  /yo search <query>           - Search memories by keyword or topic
+  /yo search tag:<name>        - Filter memories by tag (e.g., tag:bug)
+  /yo search tag:<name> <query> - Combined tag + keyword (e.g., tag:bug timezone)
 ```
