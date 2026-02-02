@@ -46,7 +46,7 @@ These skills let you quickly recall this knowledge in Claude Code using simple c
 
 In Claude Code, simply say:
 ```
-install skill https://github.com/yologdev/yo-skills
+install skill https://github.com/yologdev/yoskill
 ```
 
 Then run `/yo init` to set up hooks for automatic session tracking.
@@ -55,17 +55,17 @@ Then run `/yo init` to set up hooks for automatic session tracking.
 
 1. **Clone this repo**
    ```bash
-   git clone https://github.com/yologdev/yo-skills.git
+   git clone https://github.com/yologdev/yoskill.git
    ```
 
 2. **Copy to your project**
    ```bash
-   cp -r yo-skills/skills/yo /path/to/your/project/.claude/skills/
+   cp -r yoskill/skills/yo /path/to/your/project/.claude/skills/
    ```
 
 3. **Set up hooks** (optional but recommended)
    ```bash
-   cp -r yo-skills/skills/yo/hooks /path/to/your/project/.claude/
+   cp -r yoskill/skills/yo/hooks /path/to/your/project/.claude/
    ```
 
 ### Configure MCP CLI Path
