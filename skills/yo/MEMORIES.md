@@ -18,10 +18,9 @@ Session ID not available. Ensure the SessionStart hook is configured.
 Run `/yo init` to set up hooks.
 ```
 
-3. Call the Yocore HTTP API:
+3. Call the Yocore HTTP API (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/memories?session_id=<SESSION_ID>&limit=50&sort_by=extracted_at&sort_order=desc" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"}
+curl -s <YOCORE_URL>/api/memories?session_id=<SESSION_ID>&limit=50&sort_by=extracted_at&sort_order=desc <AUTH_HEADER>
 ```
 
 4. Parse the JSON response (array of memories) and display:

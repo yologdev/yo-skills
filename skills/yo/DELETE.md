@@ -19,10 +19,9 @@ Remove a memory (soft delete).
 
 1. Parse memory ID from arguments
 
-2. Call the Yocore HTTP API:
+2. Call the Yocore HTTP API (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-curl -s -X DELETE "${YOCORE_URL:-http://127.0.0.1:19420}/api/memories/<ID>" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"}
+curl -s -X DELETE <YOCORE_URL>/api/memories/<ID> <AUTH_HEADER>
 ```
 
 3. On success (204 No Content), confirm:

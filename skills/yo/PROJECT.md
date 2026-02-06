@@ -10,10 +10,9 @@ Get project-level context shared across all sessions. Includes key decisions, pa
 
 ## Instructions
 
-1. Call the Yocore HTTP API with current working directory:
+1. Call the Yocore HTTP API with current working directory (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/context/project?project_path=<CWD>" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"}
+curl -s <YOCORE_URL>/api/context/project?project_path=<CWD> <AUTH_HEADER>
 ```
 
 2. Parse the JSON response and display using **structured fields** (not `formatted_text`):

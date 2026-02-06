@@ -28,29 +28,27 @@ Search extracted memories by keyword, topic, or tag. Uses hybrid FTS5 + vector s
    - If starts with `tag:<name>` -> extract tag name, rest is keyword query
    - Otherwise -> keyword-only search
 
-3. Resolve the project ID:
+3. Resolve the project ID (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-PROJECT=$(curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/projects/resolve?path=<CWD>" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"})
-PROJECT_ID=$(echo "$PROJECT" | jq -r '.id')
+curl -s <YOCORE_URL>/api/projects/resolve?path=<CWD> <AUTH_HEADER>
 ```
+Extract the `id` field as `<PROJECT_ID>`.
 
 4. Call the Yocore HTTP API:
 ```bash
 # Keyword-only search
-curl -s -X POST "${YOCORE_URL:-http://127.0.0.1:19420}/api/memories/search" \
+curl -s -X POST <YOCORE_URL>/api/memories/search \
   -H "Content-Type: application/json" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"} \
+  <AUTH_HEADER> \
   -d '{"query":"<QUERY>","project_id":"<PROJECT_ID>","limit":10}'
 
 # Tag-only filter (use browse endpoint)
-curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/memories?project_id=<PROJECT_ID>&tags=<TAG>&limit=10" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"}
+curl -s <YOCORE_URL>/api/memories?project_id=<PROJECT_ID>&tags=<TAG>&limit=10 <AUTH_HEADER>
 
 # Tag + keyword combined
-curl -s -X POST "${YOCORE_URL:-http://127.0.0.1:19420}/api/memories/search" \
+curl -s -X POST <YOCORE_URL>/api/memories/search \
   -H "Content-Type: application/json" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"} \
+  <AUTH_HEADER> \
   -d '{"query":"<QUERY>","project_id":"<PROJECT_ID>","tags":["<TAG>"],"limit":10}'
 ```
 

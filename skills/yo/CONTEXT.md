@@ -18,11 +18,11 @@ Session ID not available. Use `/yo project` for project-wide context,
 or ensure the SessionStart hook is configured.
 ```
 
-3. If `YOLOG_SESSION_ID` is set, call the Yocore HTTP API:
+3. If `YOLOG_SESSION_ID` is set, call the Yocore HTTP API (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-curl -s -X POST "${YOCORE_URL:-http://127.0.0.1:19420}/api/context/session" \
+curl -s -X POST <YOCORE_URL>/api/context/session \
   -H "Content-Type: application/json" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"} \
+  <AUTH_HEADER> \
   -d '{"session_id":"<SESSION_ID>","project_path":"<CWD>"}'
 ```
 

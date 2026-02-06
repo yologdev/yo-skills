@@ -21,18 +21,17 @@ Search raw session messages (actual conversations) within the project. Uses BM25
 
 1. Extract the search query (everything after "project-search ")
 
-2. Resolve the project ID:
+2. Resolve the project ID (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-PROJECT=$(curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/projects/resolve?path=<CWD>" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"})
-PROJECT_ID=$(echo "$PROJECT" | jq -r '.id')
+curl -s <YOCORE_URL>/api/projects/resolve?path=<CWD> <AUTH_HEADER>
 ```
+Extract the `id` field as `<PROJECT_ID>`.
 
 3. Call the Yocore HTTP API:
 ```bash
-curl -s -X POST "${YOCORE_URL:-http://127.0.0.1:19420}/api/search" \
+curl -s -X POST <YOCORE_URL>/api/search \
   -H "Content-Type: application/json" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"} \
+  <AUTH_HEADER> \
   -d '{"query":"<QUERY>","project_id":"<PROJECT_ID>","limit":20}'
 ```
 

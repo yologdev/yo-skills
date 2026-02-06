@@ -27,37 +27,23 @@ Access project memories, session context, and raw conversation search from the Y
 
 **Note:** After compaction, context is **automatically injected** by the SessionStart hook - no manual `/yo context` needed.
 
-## Configuration
+## Configuration & URL Resolution
 
-Yocore HTTP API URL (defaults to local):
+**IMPORTANT: Never use shell variable expansion (like `${VAR:-default}`) in curl commands.** Claude Code's permission system cannot match commands containing shell variable expansion. Always substitute literal values.
 
-```
-YOCORE_URL=http://127.0.0.1:19420
-```
+Before running any curl command:
+1. Check if `YOCORE_URL` env var is set. If yes, use that value. If not, use `http://127.0.0.1:19420`
+2. Check if `YOCORE_API_KEY` env var is set. If yes, add `-H "Authorization: Bearer <key>"` to curl. If not, omit the header (local Yocore does not require auth)
+3. Use the resolved literal URL and auth header directly in curl commands
 
-For remote Yocore, also set the API key:
-
-```
-YOCORE_API_KEY=your-api-key
-```
-
-## Authentication
-
-If `YOCORE_API_KEY` is set, include it as a header in ALL API requests:
-
-```
--H "Authorization: Bearer ${YOCORE_API_KEY}"
-```
-
-If not set, omit the header (local Yocore does not require auth).
+In the command docs below, `<YOCORE_URL>` means the resolved URL and `<AUTH_HEADER>` means the auth header (or nothing if no API key).
 
 ## Project ID Resolution
 
 Some commands need the project UUID. Resolve it from the current working directory:
 
 ```bash
-curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/projects/resolve?path=<CWD>" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"}
+curl -s <YOCORE_URL>/api/projects/resolve?path=<CWD> <AUTH_HEADER>
 ```
 
 Returns `{ "id": "uuid", "name": "project-name", "folder_path": "..." }` or 404.

@@ -25,11 +25,11 @@ Update a memory's state or confidence.
    - `state`: One of `new`, `low`, `high`, `removed`
    - `confidence`: Float between 0 and 1
 
-3. Call the Yocore HTTP API:
+3. Call the Yocore HTTP API (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-curl -s -X PATCH "${YOCORE_URL:-http://127.0.0.1:19420}/api/memories/<ID>" \
+curl -s -X PATCH <YOCORE_URL>/api/memories/<ID> \
   -H "Content-Type: application/json" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"} \
+  <AUTH_HEADER> \
   -d '{"state":"<VALUE>"}'
 ```
 

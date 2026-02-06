@@ -10,17 +10,15 @@ List available memory tags for the current project.
 
 ## Instructions
 
-1. Resolve the project ID:
+1. Resolve the project ID (use resolved `<YOCORE_URL>` and `<AUTH_HEADER>`, see SKILL.md):
 ```bash
-PROJECT=$(curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/projects/resolve?path=<CWD>" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"})
-PROJECT_ID=$(echo "$PROJECT" | jq -r '.id')
+curl -s <YOCORE_URL>/api/projects/resolve?path=<CWD> <AUTH_HEADER>
 ```
+Extract the `id` field as `<PROJECT_ID>`.
 
 2. Call the Yocore HTTP API:
 ```bash
-curl -s "${YOCORE_URL:-http://127.0.0.1:19420}/api/projects/<PROJECT_ID>/memory-tags" \
-  ${YOCORE_API_KEY:+-H "Authorization: Bearer ${YOCORE_API_KEY}"}
+curl -s <YOCORE_URL>/api/projects/<PROJECT_ID>/memory-tags <AUTH_HEADER>
 ```
 
 3. Display the tags:

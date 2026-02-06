@@ -23,7 +23,7 @@ Set up Yolog configuration for the current project.
 Check if the Yocore HTTP API is accessible:
 
 ```bash
-curl -s --max-time 2 http://127.0.0.1:19420/health
+curl -s --max-time 3 http://127.0.0.1:19420/health
 ```
 
 If this fails, the user needs to start the Yolog desktop app (which launches Yocore).
@@ -63,7 +63,7 @@ Merge the following into the user's `~/.claude/settings.json` permissions allow 
 
 ```json
 "Skill(yo)",
-"Bash(curl:*)"
+"Bash(curl *)"
 ```
 
 This allows `/yo` commands to run without manual approval. User-level settings are required because the plugin is installed at user scope.
