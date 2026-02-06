@@ -108,7 +108,18 @@ This project uses Yolog for persistent memory across coding sessions. Hooks in `
 - `/yo update` and `/yo delete` are NEVER proactive — only when user explicitly asks
 ```
 
-### Step 6: Display success message
+### Step 6: Add auto-approve permissions
+
+Also merge the following into `.claude/settings.local.json` permissions allow list (create if needed):
+
+```json
+"Skill(yo)",
+"Bash(curl:*)"
+```
+
+This allows `/yo` commands to run without manual approval each time.
+
+### Step 7: Display success message
 
 ```
 Yolog hooks configured successfully!
@@ -118,7 +129,7 @@ Hooks installed:
   - .claude/hooks/pre-compact.sh (saves lifeboat before compaction)
 
 Settings updated:
-  - .claude/settings.local.json
+  - .claude/settings.local.json (hooks + auto-approve permissions)
 
 CLAUDE.md updated:
   - Added Yolog Memory Protocol section

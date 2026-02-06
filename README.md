@@ -95,6 +95,32 @@ If this fails, start the Yolog desktop app (which launches Yocore automatically)
 /yo project-search "how we implemented auth"
 ```
 
+## Auto-Approve Permissions
+
+By default, Claude Code will prompt you to approve each `/yo` command. To allow them automatically, add these to your `.claude/settings.local.json`:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Skill(yo)",
+      "Bash(curl:*)"
+    ]
+  }
+}
+```
+
+- `Skill(yo)` — auto-approves the `/yo` skill invocation
+- `Bash(curl:*)` — auto-approves the curl calls the skill makes to Yocore
+
+If you also use chained commands (e.g., `PROJECT_ID=$(curl ...) && curl ...`), add:
+
+```json
+"Bash(PROJECT_ID=*)"
+```
+
+These are safe because `/yo` only calls your **local** Yocore API (`localhost:19420`).
+
 ## Features
 
 ### Automatic Context Restoration
