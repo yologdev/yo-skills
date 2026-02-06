@@ -6,7 +6,7 @@
   "plugins": [
     {
       "name": "yo",
-      "source": ".",
+      "source": "./",
       "description": "Persistent memory system for AI coding sessions. Proactively searches past decisions, patterns, and context via Yocore HTTP API."
     }
   ]
