@@ -26,7 +26,7 @@ Check if the Yocore HTTP API is accessible:
 curl -s --max-time 3 http://127.0.0.1:19420/health
 ```
 
-If this fails, the user needs to start the Yolog desktop app (which launches Yocore).
+If this fails, the user needs to start Yocore.
 
 ### Step 2: Add memory protocol to CLAUDE.md
 
@@ -83,7 +83,7 @@ Next steps:
   1. Restart Claude Code to activate
   2. Use /yo context to verify session ID is captured
 
-Yocore API: [http://127.0.0.1:19420 or "Not reachable - start Yolog desktop app"]
+Yocore API: [http://127.0.0.1:19420 or "Not reachable - start Yocore"]
 ```
 
 ## Error Handling

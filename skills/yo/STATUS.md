@@ -28,7 +28,7 @@ Yocore Status: Not reachable
   URL: <YOCORE_URL>
 
 Troubleshooting:
-  - Start the Yolog desktop app (it launches Yocore automatically)
+  - Start Yocore
   - Check if YOCORE_URL is set correctly
   - Run: curl -s http://127.0.0.1:19420/health
 ```

@@ -5,7 +5,7 @@ description: "Yolog Memory System - USE PROACTIVELY. MUST search before: answeri
 
 # Yolog Memory System
 
-Access project memories, session context, and raw conversation search from the Yolog desktop app via Yocore HTTP API.
+Access project memories, session context, and raw conversation search from Yocore HTTP API.
 
 ## When to Use (PROACTIVE — do NOT wait for user to ask)
 

@@ -33,7 +33,7 @@ Found a bug or something not working? Open an issue with:
 - What you expected to happen
 - What actually happened
 - Steps to reproduce
-- Your Yolog Desktop version
+- Your Yocore version
 
 ### Improve Existing Skills
 

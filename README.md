@@ -47,7 +47,7 @@ These skills let you quickly recall this knowledge in Claude Code using simple c
 
 ### Prerequisites
 
-1. [Yolog Desktop](https://yolog.dev) installed with sessions imported
+1. [Yocore](https://yolog.dev) installed with sessions imported
 2. Memory extraction enabled (Settings > AI Features)
 
 ### Option 1: Plugin Install (Recommended)
@@ -103,7 +103,7 @@ After installation, ensure the Yocore HTTP API is accessible:
 curl -s http://127.0.0.1:19420/health
 ```
 
-If this fails, start the Yolog desktop app (which launches Yocore automatically).
+If this fails, start Yocore.
 
 ### Start Using
 
@@ -164,7 +164,7 @@ Claude Code → Skill → curl → Yocore HTTP API → Local SQLite DB → Memor
 
 ## Requirements
 
-- Yolog Desktop (which runs Yocore as a local HTTP server)
+- Yocore (local HTTP server)
 - Claude Code
 - Sessions with memory extraction completed
 - `curl` and `jq` installed (typically available by default)
