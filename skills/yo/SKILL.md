@@ -53,7 +53,7 @@ Access project memories, session context, and raw conversation search from Yocor
 | `/yo delete <id>` | Remove a memory (soft delete). See [DELETE.md](DELETE.md) |
 | `/yo tags` | List available memory tags. See [TAGS.md](TAGS.md) |
 | `/yo status` | Check if Yocore is running. See [STATUS.md](STATUS.md) |
-| `/yo init` | Set up hooks and configuration. See [INIT.md](INIT.md) |
+| `/yo init [client]` | Set up config for LLM clients (auto-detect or specify). See [INIT.md](INIT.md) |
 
 ## Instructions
 
@@ -68,7 +68,7 @@ Parse `$ARGUMENTS` to determine the command:
 - **If arguments start with `delete`**: Follow [DELETE.md](DELETE.md)
 - **If arguments equal `tags`**: Follow [TAGS.md](TAGS.md)
 - **If arguments equal `status`**: Follow [STATUS.md](STATUS.md)
-- **If arguments equal `init`**: Follow [INIT.md](INIT.md)
+- **If arguments start with `init`**: Follow [INIT.md](INIT.md)
 - **If arguments invalid**: Show usage help below
 
 ## Environment Variables
@@ -92,5 +92,5 @@ Yolog Memory Commands:
   /yo delete <id>                   - Remove a memory (soft delete)
   /yo tags                          - List available memory tags
   /yo status                        - Check Yocore connection status
-  /yo init                          - Set up hooks and configuration
+  /yo init [client]                 - Set up config (auto-detect or: claude, openclaw, cursor, windsurf, copilot, cline)
 ```

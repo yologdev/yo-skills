@@ -29,7 +29,7 @@ These skills let you quickly recall this knowledge in Claude Code using simple c
 | `/yo delete <id>` | Remove a memory (soft delete) |
 | `/yo tags` | List available memory tags |
 | `/yo status` | Check Yocore connection status |
-| `/yo init` | Set up hooks and configuration |
+| `/yo init [client]` | Set up config for LLM clients (auto-detect or specify) |
 
 **Examples:**
 ```
@@ -58,7 +58,7 @@ In Claude Code:
 /plugin install yo@yoskill
 ```
 
-This auto-registers hooks for session tracking and context restoration. Restart Claude Code after install, then run `/yo init` in your project to add memory protocol to CLAUDE.md.
+This auto-registers hooks for session tracking and context restoration. Restart Claude Code after install, then run `/yo init` in your project to configure memory integration. It auto-detects installed LLM clients (Claude Code, OpenClaw, Cursor, Windsurf, Copilot, Cline) and injects the appropriate snippet into each.
 
 ### Option 2: Manual Installation
 
